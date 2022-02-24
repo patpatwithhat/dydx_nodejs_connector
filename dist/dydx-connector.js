@@ -81,24 +81,31 @@ class DYDXConnector {
             return dydxConnector;
         });
     }
+    static isMoralisEntryPresent() {
+        if (process.env.MORALIS == undefined)
+            return false;
+        return process.env.MORALIS != "" ? true : false;
+    }
+    static isEthAddressPresent() {
+        if (process.env.ETH_ADDRESS == undefined)
+            return false;
+        return process.env.ETH_ADDRESS != "" ? true : false;
+    }
     static checkGeneralKeysPresent() {
         if (!DYDXConnector.checkIfEthPrivateKeyPresent()) {
-            if (!DYDXConnector.checkIfAllRequiredKeysPresent())
-                return false;
+            return DYDXConnector.checkIfAllRequiredKeysPresent();
         }
         return true;
     }
     static checkIfAllRequiredKeysPresent() {
         let keys = [process.env.STARK_PRIVATE_KEY, process.env.STARK_PUBLIC_KEY, process.env.STARK_COORD, process.env.DYDX_API_KEY, process.env.DYDX_PASSPHRASE, process.env.DYDX_SECRET];
-        for (const key in keys) {
-            if (key !== undefined) {
-                return true;
-            }
-            else {
-                console.log("Keys missing");
+        for (const i in keys) {
+            if (keys[i] === undefined || keys[i] === " ") {
+                console.log(keys[i]);
                 return false;
             }
         }
+        return true;
     }
     static checkIfEthPrivateKeyPresent() {
         let key = process.env.ETH_PRIVATE_KEY;

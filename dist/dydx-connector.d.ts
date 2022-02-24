@@ -12,7 +12,9 @@ export declare class DYDXConnector {
     get positionID(): string;
     set positionID(id: string);
     static build(networkId?: NetworkID): Promise<DYDXConnector>;
-    static checkGeneralKeysPresent(): boolean;
+    static isMoralisEntryPresent(): Boolean;
+    static isEthAddressPresent(): Boolean;
+    static checkGeneralKeysPresent(): Boolean;
     private static checkIfAllRequiredKeysPresent;
     private static checkIfEthPrivateKeyPresent;
     getPNLInPercent(position: PositionResponseObject): Number;

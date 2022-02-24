@@ -16,7 +16,7 @@ const WebSocket = require('ws')
 const HTTP_HOST_MAINNET = 'https://api.dydx.exchange'
 const HTTP_HOST_ROPSTEN = 'https://api.stage.dydx.exchange'
 const WS_HOST_MAINNET = 'wss://api.dydx.exchange/v3/ws'
-const WS_HOST_ROPSTEN = 'wss://api.stage.dydx.exchange/v3/ws' 
+const WS_HOST_ROPSTEN = 'wss://api.stage.dydx.exchange/v3/ws'
 
 export const enum NetworkID {
     MainNet = 1,
@@ -109,27 +109,36 @@ export class DYDXConnector {
 
     }
 
-    public static checkGeneralKeysPresent() {
+    public static isMoralisEntryPresent(): Boolean {
+        if (process.env.MORALIS == undefined) return false
+        return process.env.MORALIS != "" ? true : false
+    }
+
+
+    public static isEthAddressPresent(): Boolean {
+        if (process.env.ETH_ADDRESS == undefined) return false
+        return process.env.ETH_ADDRESS != "" ? true : false
+    }
+
+    public static checkGeneralKeysPresent(): Boolean {
         if (!DYDXConnector.checkIfEthPrivateKeyPresent()) {
-            if (!DYDXConnector.checkIfAllRequiredKeysPresent()) return false
+           return DYDXConnector.checkIfAllRequiredKeysPresent()
         }
         return true
     }
 
-    private static checkIfAllRequiredKeysPresent() {
+    private static checkIfAllRequiredKeysPresent(): Boolean {
         let keys = [process.env.STARK_PRIVATE_KEY, process.env.STARK_PUBLIC_KEY, process.env.STARK_COORD, process.env.DYDX_API_KEY, process.env.DYDX_PASSPHRASE, process.env.DYDX_SECRET]
-
-        for (const key in keys) {
-            if (key !== undefined) {
-                return true
-            } else {
-                console.log("Keys missing")
+        for (const i in keys) {
+            if (keys[i] === undefined || keys[i] === " ") {
+                console.log(keys[i])
                 return false
             }
         }
+        return true
     }
 
-    private static checkIfEthPrivateKeyPresent() {
+    private static checkIfEthPrivateKeyPresent(): Boolean {
         let key = process.env.ETH_PRIVATE_KEY
         if (key !== undefined) {
             console.log("Private Key found")
