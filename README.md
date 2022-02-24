@@ -11,7 +11,8 @@ This will take place in the following project: https://github.com/patpatwithhat/
 # How to start
 ```
 npm init -y
-npm install git+https://github.com/patpatwithhat/dydx_nodejs_connector.git ts-node
+npm i dydx_nodejs_connector
+npm install ts-node //needed for running
 ```
 Provide all required keys / paths in a .env file. (check .env-template for format)<br> 
 Eighter add your private eth key or enter your starkkeys for dydx.<br>
