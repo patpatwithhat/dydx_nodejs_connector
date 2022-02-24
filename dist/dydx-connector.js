@@ -9,7 +9,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.DYDXConnector = exports.BLUBB = void 0;
+exports.DYDXConnector = void 0;
 const v3_client_1 = require("@dydxprotocol/v3-client");
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, './../.env') });
@@ -21,7 +21,6 @@ const WS_HOST_MAINNET = 'wss://api.stage.dydx.exchange/v3/ws'; //mainnet: wss://
 const WS_HOST_ROPSTEN = 'wss://api.dydx.exchange/v3/ws';
 const UI_URL_TESTNET = "https://trade.stage.dydx.exchange/portfolio/overview";
 const UI_URL_MAINNET = "https://trade.dydx.exchange/portfolio/overview";
-exports.BLUBB = 5;
 class DYDXConnector {
     constructor(networkId = 3 /* RopstenTestNet */, keyPair, apiCreds) {
         this._positionID = "0";

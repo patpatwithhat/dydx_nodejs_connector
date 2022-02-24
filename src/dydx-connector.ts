@@ -22,9 +22,6 @@ const WS_HOST_ROPSTEN = 'wss://api.dydx.exchange/v3/ws'
 const UI_URL_TESTNET = "https://trade.stage.dydx.exchange/portfolio/overview"
 const UI_URL_MAINNET = "https://trade.dydx.exchange/portfolio/overview"
 
-
-export const BLUBB = 5;
-
 export const enum NetworkID {
     MainNet = 1,
     RopstenTestNet = 3
