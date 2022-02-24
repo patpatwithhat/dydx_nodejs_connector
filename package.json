@@ -1,8 +1,10 @@
 {
   "name": "dydx_nodejs_connector",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Warpping dydx node api into some convenient functions.",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["/dist"],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc -p ."
