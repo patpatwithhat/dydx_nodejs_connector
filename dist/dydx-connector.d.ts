@@ -32,7 +32,7 @@ export declare class DYDXConnector {
      * @returns Promise<dydx.OrderResponseObject>
      */
     createOrder(side: OrderSide, type: OrderType, timeInForce: TimeInForce, postOnly: boolean | undefined, size: string, price: string, limitFee: string | undefined, expiration: string | undefined, market: Market): Promise<OrderResponseObject>;
-    getPositions(market: Market, status: PositionStatus): Promise<PositionResponseObject[]>;
+    getPositions(market: Market | undefined, status: PositionStatus): Promise<PositionResponseObject[]>;
     getOrders(market: Market, status: OrderStatus | undefined, side: OrderSide, type: OrderType, limit?: number): Promise<OrderResponseObject[]>;
     getOrderById(id: string): Promise<OrderResponseObject>;
     getActiveOrder(market: Market): Promise<ActiveOrderResponseObject[]>;

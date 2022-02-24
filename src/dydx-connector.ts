@@ -203,7 +203,7 @@ export class DYDXConnector {
     }
 
     public async getPositions(
-        market: Market,
+        market: Market | undefined,
         status: PositionStatus
     ): Promise<PositionResponseObject[]> {
         try {
