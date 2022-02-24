@@ -6,7 +6,7 @@ import {
 } from '@dydxprotocol/starkex-lib';
 
 const path = require('path')
-require('dotenv').config({ path: path.resolve(__dirname, './../.env') })
+require('dotenv').config()
 
 
 const Web3 = require("web3");
@@ -15,12 +15,8 @@ const WebSocket = require('ws')
 
 const HTTP_HOST_MAINNET = 'https://api.dydx.exchange'
 const HTTP_HOST_ROPSTEN = 'https://api.stage.dydx.exchange'
-const WS_HOST_MAINNET = 'wss://api.stage.dydx.exchange/v3/ws' //mainnet: wss://api.dydx.exchange/v3/ws
-const WS_HOST_ROPSTEN = 'wss://api.dydx.exchange/v3/ws'
-
-
-const UI_URL_TESTNET = "https://trade.stage.dydx.exchange/portfolio/overview"
-const UI_URL_MAINNET = "https://trade.dydx.exchange/portfolio/overview"
+const WS_HOST_MAINNET = 'wss://api.dydx.exchange/v3/ws'
+const WS_HOST_ROPSTEN = 'wss://api.stage.dydx.exchange/v3/ws' 
 
 export const enum NetworkID {
     MainNet = 1,
