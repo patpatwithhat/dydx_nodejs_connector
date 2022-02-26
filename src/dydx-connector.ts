@@ -221,10 +221,12 @@ export class DYDXConnector {
         }
     }
 
-    public async getMarkets(): Promise<MarketsResponseObject> {
+    public async getMarkets(
+        market?: Market | undefined
+    ): Promise<MarketsResponseObject> {
         try {
-            const markets: { markets: MarketsResponseObject } = await this.client.public.getMarkets();
-            return markets.markets
+            const result: { markets: MarketsResponseObject } = await this.client.public.getMarkets(market);
+            return result.markets
         }
         catch (error) {
             console.log(error)
