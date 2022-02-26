@@ -39,7 +39,7 @@ async function main() {
 }
 main()
 ```
-run with: ```node --loader ts-node/esm .\index.ts```
+run with: ```node --loader ts-node/esm usage-example.ts```
 ### Place a first order on ropsten test net:
 ```
 import { DYDXConnector, NetworkID } from 'dydx_nodejs_connector'
