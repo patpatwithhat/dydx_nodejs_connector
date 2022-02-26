@@ -172,6 +172,18 @@ class DYDXConnector {
             }
         });
     }
+    getMarkets(market) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const result = yield this.client.public.getMarkets(market);
+                return result.markets;
+            }
+            catch (error) {
+                console.log(error);
+                throw (error);
+            }
+        });
+    }
     getOrders(market, status = v3_client_1.OrderStatus.OPEN, side, type, limit = 50) {
         return __awaiter(this, void 0, void 0, function* () {
             try {

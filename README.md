@@ -9,13 +9,18 @@ Later the goal will be, to implement different trading strategies for everyone t
 This will take place in the following project: https://github.com/patpatwithhat/algo_trading_strategies <br>
 
 # How to start
-```
+### Setup environment
+```sh
 npm init -y
 npm i dydx_nodejs_connector
 npm install ts-node //needed for running
 ```
 Provide all required keys / paths in a .env file. (check .env-template for format)<br> 
 Eighter add your private eth key or enter your starkkeys for dydx.<br>
+### Build this module
+```sh
+npm run build
+```
 
 # Retrieving Starkkeys / API Keys
 To retrieve starkkey/api key of dydx, do the following: <br>
@@ -30,7 +35,7 @@ The last step is to copy the ETH Address of your metamask wallet into the .env<b
 
 # Run example
 ### First, try to get an account object to check if you provided all the necessary data.
-```
+```ts
 import { DYDXConnector, NetworkID } from 'dydx_nodejs_connector'
 
 async function main() {
@@ -39,9 +44,12 @@ async function main() {
 }
 main()
 ```
-run with: ```node --loader ts-node/esm .\index.ts```
-### Place a first order on ropsten test net:
+run with: 
+```sh
+node --loader ts-node/esm usage-example.ts
 ```
+### Place a first order on ropsten test net:
+```ts
 import { DYDXConnector, NetworkID } from 'dydx_nodejs_connector'
 import { OrderSide, OrderType, TimeInForce, Market } from "@dydxprotocol/v3-client"
 

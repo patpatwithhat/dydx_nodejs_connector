@@ -1,4 +1,4 @@
-import { DydxClient, ApiKeyCredentials, PositionResponseObject, OrderResponseObject, Market, TimeInForce, OrderType, OrderSide, OrderStatus, PositionStatus, ActiveOrderResponseObject, UserResponseObject, AccountResponseObject } from "@dydxprotocol/v3-client";
+import { DydxClient, ApiKeyCredentials, PositionResponseObject, OrderResponseObject, Market, MarketsResponseObject, TimeInForce, OrderType, OrderSide, OrderStatus, PositionStatus, ActiveOrderResponseObject, UserResponseObject, AccountResponseObject } from "@dydxprotocol/v3-client";
 import { KeyPairWithYCoordinate } from '@dydxprotocol/starkex-lib';
 export declare const enum NetworkID {
     MainNet = 1,
@@ -33,6 +33,7 @@ export declare class DYDXConnector {
      */
     createOrder(side: OrderSide, type: OrderType, timeInForce: TimeInForce, postOnly: boolean | undefined, size: string, price: string, limitFee: string | undefined, expiration: string | undefined, market: Market): Promise<OrderResponseObject>;
     getPositions(market: Market | undefined, status: PositionStatus): Promise<PositionResponseObject[]>;
+    getMarkets(market?: Market | undefined): Promise<MarketsResponseObject>;
     getOrders(market: Market, status: OrderStatus | undefined, side: OrderSide, type: OrderType, limit?: number): Promise<OrderResponseObject[]>;
     getOrderById(id: string): Promise<OrderResponseObject>;
     getActiveOrder(market: Market): Promise<ActiveOrderResponseObject[]>;

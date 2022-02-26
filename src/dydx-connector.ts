@@ -1,4 +1,4 @@
-import { DydxClient, ApiKeyCredentials, PositionResponseObject, OrderResponseObject, Market, TimeInForce, OrderType, OrderSide, OrderStatus, PositionStatus, ActiveOrderResponseObject, UserResponseObject, AccountResponseObject } from "@dydxprotocol/v3-client";
+import { DydxClient, ApiKeyCredentials, PositionResponseObject, OrderResponseObject, Market, MarketsResponseObject, TimeInForce, OrderType, OrderSide, OrderStatus, PositionStatus, ActiveOrderResponseObject, UserResponseObject, AccountResponseObject } from "@dydxprotocol/v3-client";
 
 import {
     KeyPairWithYCoordinate,
@@ -221,6 +221,18 @@ export class DYDXConnector {
         }
     }
 
+    public async getMarkets(
+        market?: Market | undefined
+    ): Promise<MarketsResponseObject> {
+        try {
+            const result: { markets: MarketsResponseObject } = await this.client.public.getMarkets(market);
+            return result.markets
+        }
+        catch (error) {
+            console.log(error)
+            throw (error)
+        }
+    }
 
     public async getOrders(
         market: Market,
